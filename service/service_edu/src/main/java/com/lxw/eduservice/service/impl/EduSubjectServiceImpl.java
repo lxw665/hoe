@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * @Author: lxw
- * @Date: 2022/3/7 10:03
+ * @Date: 2022/4/7 10:03
  * @Description:
  */
 
@@ -75,14 +75,10 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
                 }
 
             }
-            //把二级分类的集合放入二级分类中
+            //把二级分类的集合放入一级分类中
             oneSubject.setChildren(twoFinalSubjectList);
 
         }
-
-
-
-
 
         return finalSubjectList;
     }

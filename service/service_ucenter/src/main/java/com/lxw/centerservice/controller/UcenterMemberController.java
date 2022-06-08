@@ -3,9 +3,12 @@ package com.lxw.centerservice.controller;
 
 import com.lxw.centerservice.entity.UcenterMember;
 import com.lxw.centerservice.entity.vo.RegisterVo;
+import com.lxw.centerservice.entity.vo.UcenterVo;
 import com.lxw.centerservice.service.UcenterMemberService;
 import com.lxw.commonutils.JwtUtils;
 import com.lxw.commonutils.R;
+import com.lxw.commonutils.ordervo.UcenterMemberOrder;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +54,31 @@ public class UcenterMemberController {
         UcenterMember ucenterMember = memberService.getById(memberId);
 
         return R.ok().data("member", ucenterMember);
+    }
+
+    //根据用户id获取用户信息
+    //返回id，头像，
+    @PostMapping("getInfoUc/{id}")
+    public R getInfoUc(@PathVariable String id) {
+        UcenterMember byId = memberService.getById(id);
+        UcenterVo ucenterVo = new UcenterVo();
+        BeanUtils.copyProperties(byId, ucenterVo);
+        return R.ok().data("ucenterVo",ucenterVo);
+    }
+
+    //根据用户id获得用户信息
+    /**
+     *  因为跨模块所以不能用原本的UcenterMember对象，而是在common里定义了一个新的UcenterMemberOrder（其实是一模一样的）
+     *  然后返回的时候把得到的UcenterMember对象的值赋给ucenterMemberOrder使用了BeanUtils的copy方法
+     */
+
+    @GetMapping("getUserInfoOrder/{id}")
+    public UcenterMemberOrder getUserInfoOrder(@PathVariable String id) {
+        UcenterMember info = memberService.getById(id);
+        //把info复制给UcenterMemberOrder
+        UcenterMemberOrder ucenterMemberOrder = new UcenterMemberOrder();
+        BeanUtils.copyProperties(info, ucenterMemberOrder);
+        return ucenterMemberOrder;
     }
 }
 
