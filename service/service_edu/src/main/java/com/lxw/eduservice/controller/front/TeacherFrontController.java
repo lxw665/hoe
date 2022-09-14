@@ -29,6 +29,7 @@ public class TeacherFrontController {
     @Autowired
     private EduCourseService courseService;
 
+    //前台讲师分页接口
     @GetMapping("getTeacherFrontList/{page}/{limit}")
     public R getTeacherFrontList(@PathVariable long page, @PathVariable long limit) {
         Page<EduTeacher> pageTeacher = new Page<>(page, limit);

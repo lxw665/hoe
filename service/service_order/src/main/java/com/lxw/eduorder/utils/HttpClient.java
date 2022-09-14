@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * http请求客户端
+ * http请求客户端 向微信支付发送http请求
  * 
  * @author qy
  * 

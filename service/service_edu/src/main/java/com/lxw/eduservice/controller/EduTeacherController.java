@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/eduservice/teacher")
-@CrossOrigin
+@CrossOrigin //解决跨域问题
 public class EduTeacherController {
 
     //注入service
@@ -97,7 +97,7 @@ public class EduTeacherController {
     @PostMapping("pageTeacherCondition/{current}/{limit}")
     public R pageTeacherCondition(@PathVariable long current, @PathVariable long limit,@RequestBody(required = false) TeacherQuery teacherQuery) {
 
-        //创建page对象
+        //创建page分页对象
         Page<EduTeacher> pageTeacher = new Page<>(current, limit);
 
         //构建条件
@@ -109,10 +109,10 @@ public class EduTeacherController {
         String end = teacherQuery.getEnd();
         //判断条件是否为空
         if (!StringUtils.isEmpty(name)) {
-            wapper.like("name", name);
+            wapper.like("name", name); //姓名模糊查询条件
         }
         if (!StringUtils.isEmpty(level)) {
-            wapper.eq("level",level);
+            wapper.eq("level",level); //等于
         }
         if (!StringUtils.isEmpty(begin)) {
             wapper.ge("gmt-modified", begin);

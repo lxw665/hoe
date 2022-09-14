@@ -76,6 +76,7 @@ public class EduVideoController {
         return R.ok();
     }
 
+
     @GetMapping("getPlayAuth/{id}")
     public R getPlayAuth(@PathVariable String id) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-shanghai", "LTAI5tB91f2WyVpRamPCS4wv", "xbkW99E10XOoYdsddpNhtdrMJ0Nhjp");
