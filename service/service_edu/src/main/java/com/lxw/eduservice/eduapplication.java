@@ -12,8 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
  * @Description:
  */
 @SpringBootApplication
-@EnableDiscoveryClient //nacos注解
-@EnableFeignClients
+//@EnableDiscoveryClient //nacos注解
+//@EnableFeignClients
 @ComponentScan(basePackages = {"com.lxw"})
 public class eduapplication {
     public static void main(String[] args) {

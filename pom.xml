@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>service</module>
-        <module>service_edu</module>
+        <module>service/service_edu</module>
 
         <module>common</module>
-        <module>service-base</module>
-        <module>service_vod</module>
+        <module>common/serbice_base</module>
+        <module>service/service_vod</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
